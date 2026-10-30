@@ -21,6 +21,9 @@ jobs:
   build:
     name: Build & Test Android APK
     runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: "--dns-result-order=ipv4first"
+      GRADLE_OPTS: "-Djava.net.preferIPv4Stack=true"
 
     steps:
       - name: Checkout Code
@@ -31,23 +34,15 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: 'gradle'
-
-      - name: Validate Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@v3
 
       - name: Make Gradle Wrapper Executable
         run: chmod +x gradlew
 
-      - name: Cache Gradle Dependencies
-        uses: actions/cache@v4
+      - name: Set up Gradle (with Wrapper Validation)
+        uses: gradle/actions/setup-gradle@v4
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', 'gradle/libs.versions.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          validate-wrappers: true
+          cache-read-only: false
 
       - name: Run Unit Tests & Lint
         run: |
