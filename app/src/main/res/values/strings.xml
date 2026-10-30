@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MohitOS</string>
+    <string name="app_tagline">YOUR DIGITAL CONTROL CENTER</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_projects">Projects</string>
+    <string name="nav_changes">Changes</string>
+    <string name="nav_deployments">Deploy</string>
+    <string name="nav_settings">Settings</string>
+</resources>

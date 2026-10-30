@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Sleek Orbital Ring (sweeps around M) -->
+    <path
+        android:strokeColor="#8A6C1C"
+        android:strokeWidth="3.6"
+        android:strokeAlpha="0.5"
+        android:fillColor="#00000000"
+        android:pathData="M 23,65 C 20,50 40,36 67,35 C 90,34 94,48 89,63 C 84,78 64,91 39,90 C 23,89 25,79 23,65" />
+    <path
+        android:strokeColor="#D4AF37"
+        android:strokeWidth="2.0"
+        android:fillColor="#00000000"
+        android:pathData="M 23,65 C 20,50 40,36 67,35 C 90,34 94,48 89,63 C 84,78 64,91 39,90 C 23,89 25,79 23,65" />
+    <path
+        android:strokeColor="#F5D76E"
+        android:strokeWidth="1.2"
+        android:strokeAlpha="0.9"
+        android:fillColor="#00000000"
+        android:pathData="M 23,65 C 20,50 40,36 67,35 C 90,34 94,48 89,63 C 84,78 64,91 39,90 C 23,89 25,79 23,65" />
+
+    <!-- Central Geometric Golden 'M' Symbol -->
+    <!-- Left Vertical Column (Metallic Gold) -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M34,36 L41,36 L41,72 L34,72 Z" />
+    <!-- Left Column Bevel / Highlight -->
+    <path
+        android:fillColor="#F5D76E"
+        android:pathData="M34,36 L36,36 L36,72 L34,72 Z" />
+
+    <!-- Right Vertical Column (Burnished Deep Gold) -->
+    <path
+        android:fillColor="#B58F22"
+        android:pathData="M67,36 L74,36 L74,72 L67,72 Z" />
+    <!-- Right Column Shadow Edge -->
+    <path
+        android:fillColor="#8C6B14"
+        android:pathData="M72,36 L74,36 L74,72 L72,72 Z" />
+
+    <!-- Left Diagonal Chevron (Champagne Gold Highlight) -->
+    <path
+        android:fillColor="#F5D76E"
+        android:pathData="M41,36 L54,58 L48,60 L36,40 Z" />
+
+    <!-- Right Diagonal Chevron (Rich Metallic Gold Shadow) -->
+    <path
+        android:fillColor="#C49A24"
+        android:pathData="M67,36 L54,58 L48,60 L60,39 Z" />
+
+    <!-- Central Diamond Apex Cap (Peak Brightness) -->
+    <path
+        android:fillColor="#FFF0AA"
+        android:pathData="M54,56 L57,60 L54,64 L51,60 Z" />
+
+    <!-- Sleek Top Cross-Bar Accents -->
+    <path
+        android:fillColor="#F5D76E"
+        android:pathData="M33,35 L42,35 L42,37 L33,37 Z" />
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M66,35 L75,35 L75,37 L66,37 Z" />
+
+    <!-- Orbital Glowing Golden Sphere (Upper-Right Orbit) -->
+    <!-- Outer Glow -->
+    <path
+        android:fillColor="#33F5D76E"
+        android:pathData="M 85,41 m -6, 0 a 6,6 0 1,0 12,0 a 6,6 0 1,0 -12,0" />
+    <!-- Mid Sphere -->
+    <path
+        android:fillColor="#F5D76E"
+        android:pathData="M 85,41 m -3.5, 0 a 3.5,3.5 0 1,0 7,0 a 3.5,3.5 0 1,0 -7,0" />
+    <!-- Core Specular Sparkle -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 84.2,40.2 m -1.2, 0 a 1.2,1.2 0 1,0 2.4,0 a 1.2,1.2 0 1,0 -2.4,0" />
+
+    <!-- Orbit Secondary Tiny Accent Dot (Lower Left) -->
+    <path
+        android:fillColor="#C49A24"
+        android:pathData="M 27,76 m -1.5, 0 a 1.5,1.5 0 1,0 3,0 a 1.5,1.5 0 1,0 -3,0" />
+</vector>

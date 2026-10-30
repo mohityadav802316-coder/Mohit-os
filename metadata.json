@@ -1,0 +1,6 @@
+{
+  "name": "MohitOS",
+  "description": "MohitOS - YOUR DIGITAL CONTROL CENTER. Personal multi-website, application, and DevOps control center.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

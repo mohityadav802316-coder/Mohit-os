@@ -1,0 +1,1130 @@
+ULTIMATE MASTER PROMPT
+
+MASTER ADMIN — PERSONAL MULTI-WEBSITE & APPLICATION CONTROL CENTER
+
+Act as a principal Android engineer, senior full-stack architect, DevOps engineer, database architect, cybersecurity engineer, API integration specialist, and professional UI/UX designer.
+
+Your mission is to design and build a production-oriented, fully functional, expandable native Android application named “Master Admin”. It will serve as my private control center for managing all my existing and future websites, web applications, backend services, databases, APIs, code repositories, hosting platforms, deployments, media, and supported third-party integrations.
+
+This is not merely a dashboard UI, website wrapper, or a simple CRUD application. Build the foundation of a real, secure, multi-project management system.
+
+The initial project to support is my existing portfolio website, referred to as “CyberMohit AI Portfolio” or “MohitPort”. My portfolio has been built using Google AI Studio and deployed on Vercel. Its existing implementation may contain Firebase, Supabase, a custom backend, external media URLs, or other integrations. Their actual presence and configuration must be discovered from the available source code instead of assumed.
+
+I want the architecture to support future expansion without rebuilding the entire application.
+
+IMPORTANT: Do not attempt to implement every imaginable third-party integration immediately. Build the complete modular architecture, integration interfaces, data models, navigation, security boundaries, and extension points now. Implement and verify integrations incrementally.
+
+==================================================
+
+1. CORE PRODUCT REQUIREMENTS
+   ==================================================
+
+Build a native Android application, not a website disguised as an app.
+
+Preferred Android technology:
+
+- Kotlin.
+- Jetpack Compose.
+- Material 3.
+- Android Navigation Compose.
+- ViewModel and lifecycle-aware state management.
+- Kotlin Coroutines and Flow.
+- Repository pattern.
+- Dependency injection using Hilt where appropriate.
+- Retrofit or Ktor Client for HTTP APIs.
+- Kotlin serialization or another suitable typed serialization solution.
+- DataStore for non-sensitive local preferences.
+- Android Keystore-backed protection where applicable.
+- Gradle Kotlin DSL.
+
+Use a modern, maintainable Android architecture such as MVVM with clean separation between presentation, domain, and data layers.
+
+If the development environment cannot generate a complete native Android project directly, generate the complete Android Studio project source, Gradle configuration, manifest, resources, build instructions, and required backend source files. Do not silently substitute React, a PWA, or a WebView application for the native app.
+
+The app must be installable on Android after a successful build.
+
+Primary objective:
+One private Android application should eventually manage multiple websites and applications through authorized APIs, databases, source-control integrations, hosting integrations, and custom connectors.
+
+==================================================
+2. MULTI-WEBSITE AND MULTI-PROJECT MANAGEMENT
+
+Create a central Projects section.
+
+I must be able to:
+
+- Add a new website or application.
+- Register an existing website.
+- Add a project name, description, URL, icon, environment, and project type.
+- Edit project details.
+- Archive or remove a project.
+- Activate or deactivate an integration.
+- Open the website in an external browser.
+- View project health and integration status.
+- Associate a project with its own repository, backend, database, storage, APIs, and hosting provider.
+- Configure separate development, preview, staging, and production environments when supported.
+- View recent changes and deployments.
+- Search, filter, sort, and group projects.
+- View project-specific settings and permissions.
+
+Support project types such as:
+
+- Portfolio websites.
+- Business websites.
+- Blogs.
+- E-commerce applications.
+- Web applications.
+- Android applications.
+- APIs and backend services.
+- Other project types through a modular plugin architecture.
+
+The app must not be permanently hardcoded to a single portfolio website.
+
+Every project must have its own configuration, integration connections, permissions, content schemas, deployment history, and audit history.
+
+Deleting a project registration must not automatically delete the real website, GitHub repository, database, hosting project, or user data. Destructive external actions must require a separate, explicit confirmation and authorization.
+
+==================================================
+3. MASTER DASHBOARD
+
+Create a polished home dashboard showing:
+
+- Total registered projects.
+- Projects with healthy or unhealthy connections.
+- Pending change requests.
+- Pending deployment approvals.
+- Recent deployments.
+- Recent content changes.
+- API connection status.
+- Database connection status.
+- Storage connection status.
+- Repository synchronization status.
+- Hosting status.
+- Security alerts.
+- Backup status.
+- Recent audit activity.
+
+Each dashboard metric must be connected to real data when its corresponding integration is configured.
+
+If an integration is unavailable, show “Not connected”, “Not configured”, or “Status unavailable” as appropriate. Do not fabricate live metrics or pretend that an external service is connected.
+
+Provide loading, empty, success, offline, permission-denied, and error states.
+
+==================================================
+4. WEBSITE CONTENT MANAGEMENT SYSTEM
+
+Build a flexible Content Manager for each registered project.
+
+The system must support different website content structures rather than assuming that every website has the same fields.
+
+Potential content types include:
+
+- Homepage sections.
+- Hero headings and descriptions.
+- Images, thumbnails, and banners.
+- About sections.
+- Profile information.
+- Skills and technologies.
+- Projects and portfolios.
+- Project descriptions, categories, and external links.
+- Experience and education.
+- Blog posts and articles.
+- Testimonials.
+- Contact details.
+- Social media links.
+- Navigation links.
+- Footer content.
+- SEO titles and descriptions.
+- Custom structured content.
+- Additional project-specific content types.
+
+Required operations:
+
+- Create.
+- Read.
+- Edit.
+- Preview.
+- Publish.
+- Unpublish.
+- Archive.
+- Restore when supported.
+- Reorder sections when supported.
+- Search and filter.
+- Draft and save.
+- Validate required fields.
+- View change history.
+- Compare previous and proposed values.
+- Revert supported changes.
+
+Support structured content schemas that can be configured for each website.
+
+Do not assume that every existing website supports every content type. Inspect the site's source code and existing data model, then map supported fields accordingly.
+
+For a portfolio website, provide an easy editor for text, images, project cards, profile information, and supported sections.
+
+For unsupported fields, explain which source-code or schema changes are required instead of silently claiming that the feature works.
+
+==================================================
+5. CONTENT CHANGES MUST REACH THE REAL WEBSITE
+
+This requirement is critical.
+
+Saving content inside the Android application must not merely update local Android state.
+
+The content must be written through the project's configured and authorized backend, database, or content API.
+
+The actual website must retrieve the updated content through its configured data source.
+
+Use an architecture such as:
+
+Android Master Admin
+|
+v
+Authenticated Backend API
+|
+v
+Authorized Project Integration
+|
+v
+Database / CMS / Existing Content API
+|
+v
+Website reads the updated content
+
+This is an architectural example, not a requirement to force every project into the same database.
+
+Where a website already has a working backend or CMS, integrate with it instead of unnecessarily replacing it.
+
+Where a project has no suitable backend, provide a migration or setup workflow to add one.
+
+Where a website currently stores content only in React state, local storage, or hardcoded source files, identify that limitation and propose the appropriate persistent solution.
+
+Provide refresh, synchronization status, and error handling.
+
+Do not report a successful save until the actual configured backend confirms success.
+
+If the backend write succeeds but the website has not yet refreshed, clearly distinguish “Saved” from “Visible on website”.
+
+Support optimistic UI updates only when they can be rolled back on failure.
+
+==================================================
+6. CODE MANAGEMENT AND SOURCE-CODE CONTROL
+
+Create a separate Code Manager.
+
+The application must eventually support authorized source-code management for connected projects.
+
+Potential features:
+
+- Connect a GitHub repository.
+- Display repository name, branch, language, and latest commit.
+- Browse authorized repository files.
+- View source code.
+- Search for functions, components, routes, API endpoints, configuration, and integrations.
+- Inspect project structure.
+- Review source-code changes.
+- Compare the current version with a proposed version.
+- Create change requests.
+- Create feature branches.
+- Prepare pull requests.
+- Review diffs.
+- Run configured tests and builds.
+- View test results.
+- View deployment logs.
+- View preview deployments.
+- Approve or reject proposed changes.
+- Roll back using a verified prior version where supported.
+
+The Code Manager must not expose unrestricted server access or arbitrary destructive operations by default.
+
+Never automatically modify production code merely because a user opens a file or submits an edit.
+
+Use a controlled workflow:
+
+1. Read the authorized repository and identify the target file.
+2. Understand the existing implementation and dependencies.
+3. Propose the smallest appropriate changes.
+4. Generate a patch or feature branch.
+5. Show a readable diff.
+6. Explain the purpose and expected impact.
+7. Run configured linting, tests, and build checks.
+8. Create or update a preview deployment.
+9. Ask the owner for explicit production deployment approval.
+10. Deploy only after approval.
+11. Verify deployment health.
+12. Record the result and provide rollback options.
+
+For risky changes, require stronger confirmation and additional checks.
+
+Protect secrets, environment files, credentials, and sensitive configuration from accidental display or inclusion in generated patches.
+
+Do not place a GitHub personal access token, Vercel token, database password, or backend secret in the Android source code.
+
+==================================================
+7. DEPLOYMENT AND RELEASE MANAGEMENT
+
+Support hosting integrations through provider-specific adapters.
+
+Vercel is a priority because my existing portfolio is deployed there.
+
+Build a deployment management interface with:
+
+- Connected hosting projects.
+- Production and preview environments.
+- Latest deployment status.
+- Build status and logs where available.
+- Deployment URL.
+- Commit or source revision.
+- Triggered-by information.
+- Deployment timestamps.
+- Failed deployment diagnostics.
+- Preview verification.
+- Approval workflow.
+- Deployment history.
+- Rollback or redeployment of a verified prior version where supported.
+
+Recommended release flow:
+
+Code change
+→ Review diff
+→ Run checks
+→ Create preview deployment
+→ Verify preview
+→ Request explicit approval
+→ Deploy to production
+→ Run health checks
+→ Record deployment
+→ Offer rollback if needed
+
+A production deployment must never be triggered silently by an ordinary content-editing action unless a specific, safe, separately configured publishing policy explicitly allows it.
+
+Never claim that deployment succeeded unless the hosting provider confirms it.
+
+If the integration is not configured, display setup instructions and the exact missing permissions.
+
+==================================================
+8. API INTEGRATION CENTER
+
+Create a dedicated Integrations section.
+
+The system must be able to connect multiple projects to different APIs and services without being locked into one provider.
+
+Potential integrations include:
+
+- REST APIs.
+- GraphQL APIs where required.
+- Custom backend APIs.
+- Authentication providers.
+- Database services.
+- Content management systems.
+- GitHub.
+- Vercel.
+- Object storage.
+- Analytics providers.
+- Monitoring and error tracking.
+- Email services.
+- Other future services through adapters.
+
+For each integration, store appropriate metadata such as:
+
+- Integration type.
+- Provider.
+- Display name.
+- Associated project.
+- Connection status.
+- API base URL where applicable.
+- Environment.
+- Required scopes.
+- Last successful synchronization.
+- Last error.
+- Health-check status.
+- Setup instructions.
+- Connection ownership.
+
+Do not expose secret credentials in API responses or user interfaces.
+
+For custom API connections, provide a controlled setup screen for the base URL, authentication method, required headers, endpoints, and supported operations.
+
+Do not execute arbitrary URLs or accept arbitrary server-side requests without validation. Protect against SSRF, unsafe redirects, insecure HTTP, unauthorized origins, and other API-abuse risks.
+
+Validate TLS, permissions, request schemas, response schemas, rate limits, and timeouts.
+
+Support pagination, retries for safe operations, and clear error reporting.
+
+Never blindly retry non-idempotent operations that could create duplicate records or perform destructive actions.
+
+==================================================
+9. DATABASE MANAGEMENT
+
+Design the system to support multiple database providers and multiple databases per project.
+
+Potential providers include:
+
+- PostgreSQL.
+- Supabase PostgreSQL.
+- Neon PostgreSQL.
+- Firebase Firestore.
+- MySQL.
+- Other providers through appropriate adapters.
+
+These are optional integrations, not mandatory dependencies for every project.
+
+The Master Admin backend may use a managed PostgreSQL database as its initial implementation, but keep the data-access layer replaceable.
+
+Use migrations and versioned database schemas.
+
+Support, when authorized and technically appropriate:
+
+- Connection status.
+- Database and schema metadata.
+- Tables and collections.
+- Read-only data inspection.
+- Structured record search.
+- Approved CRUD operations.
+- Schema information.
+- Migration history.
+- Backup status.
+- Query or operation logs where available.
+- Permission inspection.
+- Connection diagnostics.
+
+Database administration must be role-based and server-side authorized.
+
+Default to read-only inspection for unknown databases.
+
+For writes, require explicit permissions and validate the requested operation.
+
+For destructive schema changes, require a clear explanation, a verified backup or recovery plan where feasible, and explicit confirmation.
+
+Never expose database credentials to the Android application.
+
+Do not give the Android client unrestricted database access.
+
+Do not create an arbitrary SQL execution endpoint available to ordinary users. If advanced database administration is later implemented, isolate it behind tightly scoped owner-only authorization, strict validation, audit logging, and appropriate operational safeguards.
+
+==================================================
+10. DATABASE STRATEGY AND STORAGE
+
+Keep the architecture practical and cost-conscious.
+
+Separate these concepts:
+
+A. Master Admin's own database:
+Stores project registrations, integration metadata, content schemas, change requests, approvals, deployment records, audit events, and other application-management data.
+
+B. Each connected website's database:
+May already exist and should be reused when appropriate.
+
+C. Media storage:
+May use existing public image URLs, authorized object storage, or another suitable provider.
+
+D. Source code:
+Remains in its authorized Git repository or configured source-control system.
+
+Do not force all website content, images, code, and credentials into one database.
+
+Use normalized relational tables where appropriate and JSON fields only where flexible project-specific structures genuinely benefit from them.
+
+Design migrations, indexes, timestamps, ownership fields, relationships, and deletion policies carefully.
+
+Provide an environment configuration template without actual secrets.
+
+Document the minimum setup required for a working first deployment.
+
+==================================================
+11. AUTHENTICATION AND OWNER ACCESS
+
+This is a private owner-operated application.
+
+Support the following login methods:
+
+- Google Sign-In.
+- Email and password.
+
+Use a maintained authentication provider or a properly implemented authentication service.
+
+Firebase Authentication may be used if it simplifies authentication, but do not require Firebase for all application functionality. Keep the authentication interface modular so a different supported provider can be introduced later.
+
+Support:
+
+- Owner account enrollment.
+- Secure session management.
+- Logout.
+- Session expiration.
+- Token refresh.
+- Password recovery through the configured provider.
+- Email verification where supported.
+- Optional multi-factor authentication.
+- Device/session management where supported.
+- Account recovery procedures.
+
+Initially, only the explicitly authorized owner should have full administrative access.
+
+Do not assume that anyone who can sign in is automatically an administrator.
+
+Verify owner identity and roles on the backend for every sensitive operation.
+
+Do not hardcode the owner's password, secret email allowlist, access token, or administrator credentials into public client code.
+
+For initial owner enrollment, provide a secure setup procedure that binds the intended account to the owner role.
+
+Prevent unauthorized users from registering themselves as owners.
+
+If future collaborators are supported, implement roles such as Owner, Administrator, Developer, Content Editor, and Read-Only Viewer with least-privilege permissions.
+
+Require additional confirmation or step-up authentication for high-risk actions when appropriate.
+
+==================================================
+12. PRIVATE APPLICATION AND WEBSITE SEPARATION
+
+The Master Admin Android app is a separate private application.
+
+Do not add a public Master Admin login button or visible administration entry point to my portfolio website.
+
+Do not make the Android admin app depend on the portfolio's public frontend being loaded inside a WebView.
+
+The portfolio may keep an existing private or legacy Admin Panel temporarily, but the long-term architecture should allow both the Android app and any retained admin interface to use the same authorized backend services.
+
+If both interfaces are retained, changes made through one must be visible to the other through their shared configured data source.
+
+Never assume that the existing Admin Panel is connected to Firebase, Supabase, or any particular backend until the source code or configuration confirms it.
+
+If the existing Admin Panel writes only to browser memory, local storage, or local frontend state, explain why that cannot reliably synchronize with the Android app and propose a safe migration.
+
+==================================================
+13. BACKEND API ARCHITECTURE
+
+Build a dedicated backend API for Master Admin.
+
+Preferred backend:
+
+- TypeScript.
+- Node.js.
+- A maintainable framework such as Fastify or NestJS.
+- Validated request and response schemas.
+- Versioned API routes.
+- Centralized error handling.
+- Structured logging.
+- Database migrations.
+- Automated tests.
+- Environment-based configuration.
+- Health-check endpoints.
+- Rate limiting.
+- Authentication and authorization middleware.
+
+Use a clean modular structure, for example:
+
+/apps
+/android
+/services
+/api
+/packages
+/shared
+/integration-contracts
+/infrastructure
+/docs
+
+Adapt the repository layout to the actual generated project when necessary. Do not create empty folders solely to make the structure look complete.
+
+Possible API groups:
+
+- /api/v1/auth
+- /api/v1/projects
+- /api/v1/integrations
+- /api/v1/content
+- /api/v1/repositories
+- /api/v1/change-requests
+- /api/v1/previews
+- /api/v1/deployments
+- /api/v1/databases
+- /api/v1/storage
+- /api/v1/backups
+- /api/v1/audit-logs
+- /api/v1/health
+
+Define request schemas, response schemas, permissions, pagination, validation, and errors for each implemented endpoint.
+
+These endpoint names are a design proposal. Implement only endpoints with actual working behavior, and document any that remain planned.
+
+Use idempotency keys for appropriate high-impact operations.
+
+Use correlation IDs to trace a change from the Android client through the backend and external provider.
+
+Never return provider secrets, passwords, private keys, refresh tokens, or internal stack traces in client-facing responses.
+
+==================================================
+14. INTEGRATION ADAPTERS AND PLUGIN SYSTEM
+
+Design provider integrations as replaceable modules rather than tightly coupling business logic to a single provider.
+
+Create well-defined interfaces for:
+
+- Authentication.
+- Project hosting.
+- Source control.
+- Content storage.
+- Relational databases.
+- Document databases.
+- Object storage.
+- Analytics.
+- Monitoring.
+- Notifications.
+
+An integration adapter must declare:
+
+- Supported operations.
+- Required permissions.
+- Configuration requirements.
+- Authentication requirements.
+- Health-check capability.
+- Available capabilities.
+- Unsupported capabilities.
+- Error handling.
+- Rate-limit behavior.
+
+Allow new integrations to be added later without rewriting the whole application.
+
+Maintain a clear distinction between an integration that is implemented, configured, connected, authorized, and currently healthy. These are different states.
+
+Do not present a provider as working merely because its name appears in the interface.
+
+==================================================
+15. CHANGE REQUESTS AND APPROVAL CENTER
+
+Build a central Change Requests section.
+
+It should display pending, approved, rejected, failed, and completed requests.
+
+Each request should include:
+
+- Project.
+- Request type.
+- Request creator.
+- Target environment.
+- Requested changes.
+- Reason for change.
+- Risk level.
+- Affected resources.
+- Before-and-after values or code diff.
+- Validation results.
+- Preview link when available.
+- Approval history.
+- Execution status.
+- Failure reason.
+- Recovery or rollback information.
+
+Support separate approval policies for:
+
+- Ordinary content edits.
+- Publishing content.
+- Source-code changes.
+- Database modifications.
+- Credential or integration changes.
+- Production deployment.
+- Destructive operations.
+
+The owner must be able to review, approve, reject, or cancel a request where safe.
+
+Approval must be checked by the backend at execution time. A client-side button is not sufficient authorization.
+
+A previously approved request must not be silently altered before execution. If its effective changes change, invalidate the approval and require review again.
+
+==================================================
+16. MEDIA AND FILE MANAGEMENT
+
+Create a Media Manager.
+
+Support:
+
+- Registering an image or media URL.
+- Adding a title, alt text, description, category, and associated project.
+- Previewing supported media.
+- Validating URLs.
+- Assigning media to supported content fields.
+- Replacing a media reference.
+- Removing a reference.
+- Checking whether a link appears reachable when permitted.
+- Managing media metadata.
+- Connecting an authorized storage provider when needed.
+
+My initial preference may be to use externally hosted image URLs to keep the setup simple. Support that option.
+
+Do not require Firebase Storage or Supabase Storage for every project.
+
+If storage integration is added, use provider-specific permissions and private server-side credentials.
+
+Do not assume that deleting a URL from a website means the remote file itself should be deleted.
+
+Show a warning before any operation that deletes an actual remote file.
+
+Validate allowed schemes and hosts where appropriate. Prevent unsafe local-network URL fetching and server-side request forgery.
+
+Handle broken links and unsupported formats gracefully.
+
+==================================================
+17. BACKUP, RESTORE, AND ROLLBACK
+
+Design a recovery system for the resources that can actually be backed up.
+
+Support, where technically available:
+
+- Master Admin database backups.
+- Export of project configuration.
+- Export of supported content records.
+- Change history.
+- Repository revision references.
+- Deployment history.
+- Integration metadata backups without exporting secrets insecurely.
+- Recovery instructions.
+- Restore validation.
+- Backup timestamps and status.
+
+Never claim a resource is backed up when no backup has actually completed.
+
+Never store unencrypted secrets inside ordinary backup exports.
+
+Before destructive changes, verify that an appropriate recovery path exists whenever feasible.
+
+Distinguish between restoring a database, reverting content, reverting a Git commit, and redeploying a previous build. These are different recovery operations.
+
+==================================================
+18. SECURITY REQUIREMENTS
+
+Security is a first-class requirement, not a later enhancement.
+
+Implement or document:
+
+- Server-side authorization for every sensitive endpoint.
+- Least-privilege permissions.
+- Secure authentication and session handling.
+- HTTPS for production.
+- Secret storage on the backend or in an appropriate secrets manager.
+- Short-lived access tokens where supported.
+- Safe refresh-token handling.
+- Request validation.
+- Output encoding where relevant.
+- SQL injection protection through parameterized operations and appropriate query abstractions.
+- Rate limiting.
+- Protection against brute-force login attempts.
+- CORS restrictions for browser-based clients.
+- CSRF protections where applicable to cookie-based browser sessions.
+- SSRF and unsafe URL protections.
+- Audit logging.
+- Dependency and vulnerability checks.
+- Secure error responses.
+- Data retention policies.
+- Backup security.
+- Permission checks for project ownership.
+- Safe logging that excludes secrets.
+- Environment separation.
+- Production configuration checks.
+
+Do not treat a hidden admin URL, a secret button, a client-side role flag, or a hardcoded API key as security.
+
+Never embed privileged provider tokens or database credentials in the Android APK.
+
+Use the Android Keystore for appropriate local key protection. Keep provider credentials on the backend whenever possible.
+
+Do not log passwords, authorization headers, full tokens, or sensitive request bodies.
+
+If a security-critical feature cannot be implemented reliably in the available environment, clearly document the limitation and do not pretend it is complete.
+
+==================================================
+19. AUDIT LOGGING
+
+Maintain an append-oriented audit trail for important operations.
+
+Capture:
+
+- Actor.
+- Action.
+- Project.
+- Resource type and identifier.
+- Timestamp.
+- Outcome.
+- Request or correlation ID.
+- Relevant change summary.
+- Approval reference when applicable.
+- Deployment reference when applicable.
+
+Record content edits, approvals, repository changes, integration changes, permission changes, deployments, restore operations, and destructive actions.
+
+Do not record passwords, full tokens, private keys, or unnecessary personal information.
+
+Ordinary application users must not be able to alter or erase the authoritative audit history.
+
+==================================================
+20. NOTIFICATIONS AND STATUS
+
+Design a notification center for:
+
+- Failed builds.
+- Failed deployments.
+- Unhealthy integrations.
+- Failed content synchronization.
+- Pending approvals.
+- Backup failures.
+- Security alerts.
+- Expiring credentials when detectable.
+- Completed deployments.
+- Failed change requests.
+
+Start with in-app notifications.
+
+Add push notifications later through an appropriate supported provider.
+
+Do not require push notifications for the core system to work.
+
+Notifications must reflect actual backend events or verified status changes, not fabricated activity.
+
+==================================================
+21. UI/UX DESIGN
+
+Create a premium, professional, modern native Android interface.
+
+Design direction:
+
+- Dark-first theme.
+- Optional light theme.
+- Material 3 components.
+- Clear typography.
+- Carefully spaced layouts.
+- Rounded cards used with restraint.
+- Readable status indicators.
+- Consistent icons.
+- Smooth but restrained transitions.
+- Accessible contrast.
+- Responsive layouts for phones and tablets.
+- Appropriate touch targets.
+- Loading skeletons where useful.
+- Empty states with useful next actions.
+- Confirmation dialogs for destructive actions.
+- Clear error messages and recovery guidance.
+
+Suggested bottom navigation:
+
+1. Home.
+2. Projects.
+3. Changes.
+4. Deployments.
+5. Settings.
+
+Use additional navigation destinations for:
+
+- Content Manager.
+- Code Manager.
+- Integrations.
+- Database Manager.
+- Media Manager.
+- Backups.
+- Audit Logs.
+- Notifications.
+- Project Details.
+
+Do not overload the bottom navigation with every feature.
+
+The dashboard should prioritize useful information and clear next actions instead of decorative statistics.
+
+Provide searchable lists and detail screens for large collections.
+
+All visible controls must have meaningful behavior. Do not add nonfunctional buttons merely to make the UI look complete.
+
+==================================================
+22. PROPOSED MASTER DATABASE MODEL
+
+Design a migration-managed relational schema with appropriate foreign keys, indexes, constraints, and timestamps.
+
+Potential tables include:
+
+- users
+- user_roles
+- projects
+- project_environments
+- integrations
+- integration_capabilities
+- integration_permissions
+- content_schemas
+- content_entries
+- content_versions
+- media_assets
+- repository_connections
+- change_requests
+- change_request_items
+- approvals
+- preview_deployments
+- deployments
+- deployment_events
+- backup_records
+- restore_records
+- notifications
+- audit_logs
+- project_health_checks
+
+Add, remove, or combine tables when the actual architecture requires it.
+
+Use opaque identifiers where appropriate.
+
+Define ownership and tenant boundaries so one project's data cannot accidentally be accessed through another project's permissions.
+
+Keep provider credentials out of ordinary project records and API responses. Store secret references or encrypted credential material using a suitable server-side secret-management design.
+
+Do not store redundant copies of all external repository code or all website data without a clear requirement.
+
+==================================================
+23. LOW-COST AND INCREMENTAL IMPLEMENTATION
+
+Cost is important. Prefer free tiers and low-cost managed services where they genuinely fit, but do not promise that any provider will remain free.
+
+Avoid unnecessary paid services, duplicated databases, excessive background polling, and overly complicated infrastructure.
+
+Use a practical initial deployment strategy.
+
+Potential components may include:
+
+- Android application.
+- A TypeScript backend API.
+- A managed PostgreSQL database.
+- An authentication provider.
+- GitHub for source control.
+- Vercel for the existing portfolio and supported preview deployments.
+- Existing media URLs or optional object storage.
+
+These are candidate choices, not mandatory assumptions. Compare current project requirements before selecting providers.
+
+Avoid adding both Firebase and Supabase by default if one appropriate solution can meet the requirement.
+
+Do not remove an existing service until the actual code and dependencies have been inspected and a migration plan has been approved.
+
+Build incrementally while preserving the complete long-term architecture.
+
+==================================================
+24. REQUIRED IMPLEMENTATION PHASES
+
+PHASE 1 — INSPECT AND PLAN
+
+Inspect all available project files before making changes.
+
+Identify:
+
+- Existing framework and languages.
+- Existing Android project, if any.
+- Current portfolio architecture.
+- Existing authentication.
+- Existing database or backend.
+- Existing content source.
+- Existing image and storage handling.
+- Existing GitHub and Vercel configuration.
+- Environment variable requirements.
+- Deployment process.
+- Current tests and build commands.
+
+Do not claim to have inspected files that were not provided or accessible.
+
+Produce an architecture report, dependency map, security review, migration plan, and implementation plan.
+
+Clearly label every finding as confirmed, inferred, or unknown.
+
+PHASE 2 — FOUNDATION
+
+Create:
+
+- Native Android project.
+- Core navigation.
+- Design system.
+- Authentication integration boundary.
+- Backend API skeleton.
+- Database migrations.
+- Project registry.
+- Integration registry.
+- Environment configuration template.
+- Structured logging.
+- Health checks.
+- Basic automated tests.
+- Setup and build documentation.
+
+PHASE 3 — WORKING MASTER DASHBOARD
+
+Implement real project registration and management backed by the backend.
+
+Implement real loading, error, empty, and success states.
+
+Do not use fake live data to simulate functionality.
+
+PHASE 4 — CONTENT MANAGEMENT
+
+Implement one working end-to-end content-management flow for the existing portfolio or a clearly documented sample integration.
+
+Demonstrate that a saved change reaches the actual configured data source and becomes visible on the website when the website supports that integration.
+
+If the existing portfolio cannot yet support this workflow, explain and implement the necessary approved backend or website changes in a separate branch or proposal.
+
+PHASE 5 — SOURCE CONTROL AND CHANGE REQUESTS
+
+Implement authorized repository connection, change-request records, source diffs, validation, and preview workflow.
+
+Do not expose privileged credentials to the Android app.
+
+PHASE 6 — DEPLOYMENT
+
+Implement the Vercel integration or a well-defined provider adapter with a verified setup flow.
+
+Support preview deployments and explicit production approval.
+
+Test the actual provider integration before describing it as functional.
+
+PHASE 7 — ADVANCED MODULES
+
+Add database inspection, media management, backups, notifications, and additional providers progressively.
+
+For each phase, preserve working functionality, run tests, document migration steps, and avoid breaking existing projects.
+
+==================================================
+25. TESTING AND ACCEPTANCE CRITERIA
+
+Create automated tests where practical, including:
+
+- Unit tests.
+- Repository tests.
+- API tests.
+- Authentication and authorization tests.
+- Database migration tests.
+- Integration contract tests.
+- UI tests for critical flows.
+- Security-related validation tests.
+
+The application is not considered complete merely because it compiles or displays a dashboard.
+
+Verify these critical end-to-end workflows:
+
+TEST A — OWNER LOGIN
+
+An authorized owner can sign in. An unauthorized user cannot obtain owner permissions merely by registering or modifying the client.
+
+TEST B — PROJECT REGISTRATION
+
+The owner adds a project, refreshes the app, and sees the saved project retrieved from the backend.
+
+TEST C — CONTENT UPDATE
+
+The owner edits a supported field. The backend confirms the write. The website reads the updated value. Failure is reported accurately.
+
+TEST D — CHANGE REVIEW
+
+A code change creates a reviewable proposal. The owner can inspect the diff and validation results.
+
+TEST E — PREVIEW AND DEPLOYMENT
+
+A supported repository integration creates a preview. Production deployment requires the configured approval policy.
+
+TEST F — SECRET PROTECTION
+
+Privileged provider credentials do not appear in the APK, normal API responses, client logs, or repository commits.
+
+TEST G — AUDIT LOG
+
+Important successful and failed administrative operations are recorded appropriately.
+
+TEST H — FAILURE RECOVERY
+
+Unavailable providers, expired credentials, failed builds, and failed writes produce understandable errors without falsely reporting success.
+
+TEST I — CROSS-PROJECT ISOLATION
+
+Operations authorized for one project cannot be used to access another project's restricted resources.
+
+TEST J — DESTRUCTIVE ACTIONS
+
+Deleting a local project registration does not accidentally delete external production resources.
+
+Provide the results of tests that were actually run. Clearly identify tests that were not run or require external credentials.
+
+==================================================
+26. DELIVERABLES
+
+Produce the following deliverables:
+
+1. Complete native Android Studio project source.
+2. Backend API source.
+3. Database schema and migration files.
+4. Authentication and authorization implementation or documented provider setup.
+5. Integration adapter interfaces.
+6. Implemented integration modules.
+7. Environment variable example file with placeholders only.
+8. API documentation.
+9. Architecture documentation.
+10. Database relationship documentation.
+11. Android build and installation instructions.
+12. Backend deployment instructions.
+13. Initial owner-enrollment instructions.
+14. GitHub setup instructions.
+15. Vercel setup instructions.
+16. Local development instructions.
+17. Automated tests.
+18. Security and operational checklist.
+19. Backup and recovery instructions.
+20. A list of implemented, partially implemented, planned, and blocked features.
+
+If the environment supports generating files, create the actual project files rather than responding with only code snippets.
+
+If the complete project is too large for one generation, create it in coherent stages, preserve existing files, and report the exact next step. Never replace working code with placeholder implementations simply to finish faster.
+
+==================================================
+27. STRICT DEVELOPMENT RULES
+
+- Do not assume that Firebase or Supabase is currently connected.
+- Do not assume the existing Admin Panel uses a particular database.
+- Do not remove existing integrations before inspecting the code and obtaining approval.
+- Do not rewrite the entire existing portfolio when a smaller change is sufficient.
+- Do not expose privileged credentials to Android.
+- Do not rely on client-side authorization.
+- Do not create fake integrations or fake success responses.
+- Do not automatically deploy unreviewed code to production.
+- Do not overwrite existing data without a recovery plan.
+- Do not create unprotected arbitrary database-query endpoints.
+- Do not silently replace native Android with a WebView.
+- Do not mark unimplemented features as complete.
+- Do not invent external URLs, credentials, deployment results, or test results.
+- Do not store actual secrets in source code.
+- Do not require every future project to use the same provider.
+- Do not make the system dependent on a single hardcoded website.
+- Keep the code modular, typed, documented, testable, and maintainable.
+- Prefer real end-to-end functionality over decorative complexity.
+
+==================================================
+28. FINAL EXECUTION INSTRUCTIONS
+
+Start by inspecting the actual files available in the current workspace.
+
+If this is a new project with no existing source files, state that clearly and initialize the project from the specification.
+
+First deliver:
+
+A. An architecture overview.
+B. A directory structure.
+C. The selected technology stack and why it fits.
+D. The initial database schema.
+E. The authentication and authorization design.
+F. The API contract.
+G. The integration plan for the existing portfolio.
+H. The security threat checklist.
+I. A phased implementation plan.
+
+Then begin implementing the foundation and the first working end-to-end feature.
+
+Do not stop after presenting the plan if the environment allows actual implementation.
+
+Before every major change, explain the intended scope and protect existing working functionality.
+
+At the end of each implementation phase, report:
+
+- Files created or modified.
+- Features that actually work.
+- Tests executed and their results.
+- Integrations that are connected and verified.
+- Integrations still awaiting credentials.
+- Known limitations.
+- Exact next steps.
+
+The ultimate goal is to create a secure, genuinely functional, native Android Master Admin application that can gradually become the central control center for all my websites, applications, APIs, databases, content, source code, and deployments.
+
+Build the foundation correctly first. Expand safely. Verify every integration. Keep the owner in control of production changes.
